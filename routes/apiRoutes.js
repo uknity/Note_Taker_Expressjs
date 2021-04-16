@@ -9,6 +9,7 @@ module.exports = (app) => {
     app.get('/api/notes', (req, res) => {
         //fs readfile db with its own file with err / data
         fs.readFile("db/db.json","utf8", (err, data) => res.json(JSON.parse(data)));
+        
        
     });
 
@@ -29,6 +30,7 @@ module.exports = (app) => {
             noteArr.push(newNote);
     // writes the notes Array to the db.json file using JSON.stringify)
             fs.writeFileSync("db/db.json", JSON.stringify(noteArr), "utf8");
+            res.sendStatus(200);
         });
     })  
 
